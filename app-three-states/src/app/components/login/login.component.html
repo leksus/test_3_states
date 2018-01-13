@@ -1,0 +1,37 @@
+<h3>Login</h3>
+
+<div>
+    <form [formGroup]="homeForm" novalidate>
+        <div>
+            <label class="center-block">Email:
+                <input formControlName="email" (keydown)="emailLog($event)">
+            </label>
+            <label class="center-block">Country:
+                <p-autoComplete
+                    [(ngModel)]="country"
+                    formControlName="country"
+                    [suggestions]="filteredCountries"
+                    (completeMethod)="filterCountries($event)"
+                    (onSelect)="selectCountry($event)"
+
+                >
+                    <ng-template let-country pTemplate="item">
+                        {{country.title}}
+                    </ng-template>
+                </p-autoComplete>
+            </label>
+        </div>
+
+        <button
+            class="btn btn-default"
+            [disabled]="homeForm.invalid || loading"
+            (click)="signIn()"
+        >
+            Sign in
+        </button>
+        <div *ngIf="loading">
+            Загрузка...
+        </div>
+
+    </form>
+</div>
