@@ -9,11 +9,12 @@ import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import {AutoCompleteModule} from 'primeng/primeng';
 import {HttpClientModule} from "@angular/common/http";
 import {LoginComponent} from "./components/login/login.component";
+import { ValidEmailDirective } from './directive/valid-email.directive';
 
 
 @NgModule({
     declarations: [
-        AppComponent, HomeComponent, LoginComponent
+        AppComponent, HomeComponent, LoginComponent, ValidEmailDirective
     ],
     imports: [
         BrowserModule, RouterModule.forRoot(appRoutes), FormsModule, ReactiveFormsModule,

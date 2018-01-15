@@ -4,24 +4,21 @@ import {TimerObservable} from "rxjs/observable/TimerObservable";
 import {HttpClient} from "@angular/common/http";
 import {countries, country} from "../../data/countries";
 import {Router} from "@angular/router";
-import {emailValidator} from "../../directive/valid-email.directive";
 
 @Component({
-    selector: 'login',
-    templateUrl: './login.component.html'
+    selector: 'home',
+    templateUrl: './home.component.html'
 })
-export class LoginComponent implements OnInit {
+export class HomeComponent implements OnInit {
     homeForm: FormGroup;
     email: string;
     country: string;
     countries: Array<country>;
     filteredCountries: Array<country>;
-    loading: boolean;
     // countriesApi: string = 'https://api.vk.com/api.php?oauth=1&method=database.getCountries&v=5.69&need_all=1&count=1000';
 
     constructor(private http: HttpClient, private router: Router) {
         this.createForm();
-        this.loading = false;
     }
 
     ngOnInit() {
@@ -38,7 +35,7 @@ export class LoginComponent implements OnInit {
     createForm() {
         this.homeForm = new FormGroup({
             email: new FormControl(this.email, [
-                emailValidator, Validators.required
+                Validators.email, Validators.required
             ]),
             country: new FormControl(this.country, [
                 Validators.required
@@ -67,9 +64,8 @@ export class LoginComponent implements OnInit {
     }
 
     signIn() {
-        this.loading = true;
         TimerObservable.create(3000).subscribe(() => {
-            this.router.navigate(['/home']);
+            this.router.navigate(['/']);
         });
     }
 }

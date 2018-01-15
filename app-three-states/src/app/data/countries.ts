@@ -1,5 +1,5 @@
 export interface country {
-    id: string,
+    id: number,
     title: string
 }
 
