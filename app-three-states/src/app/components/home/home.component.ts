@@ -1,71 +1,40 @@
 import {Component, OnInit} from '@angular/core';
-import {FormControl, FormGroup, Validators} from "@angular/forms";
-import {TimerObservable} from "rxjs/observable/TimerObservable";
-import {HttpClient} from "@angular/common/http";
-import {countries, country} from "../../data/countries";
 import {Router} from "@angular/router";
+import {TreeNode} from "primeng/primeng";
+import {treeStructure1} from "../../data/test-struct1";
+import {treeStructure2} from "../../data/test-struct2";
 
 @Component({
     selector: 'home',
-    templateUrl: './home.component.html'
+    templateUrl: './home.component.html',
+    styles: [`
+        .changed {
+            color: red;
+        }
+    `]
 })
 export class HomeComponent implements OnInit {
-    homeForm: FormGroup;
-    email: string;
-    country: string;
-    countries: Array<country>;
-    filteredCountries: Array<country>;
-    // countriesApi: string = 'https://api.vk.com/api.php?oauth=1&method=database.getCountries&v=5.69&need_all=1&count=1000';
 
-    constructor(private http: HttpClient, private router: Router) {
-        this.createForm();
+    tree1: TreeNode[];
+    tree2: TreeNode[];
+    constructor(private router: Router) {
+
     }
 
     ngOnInit() {
-        this.getCountries();
+        this.getData();
     }
 
-    getCountries() {
-        // this.http.get(this.countriesApi).subscribe((data: VKResponse) => {
-        //     this.countries = data.response.items;
-        // });
-        this.countries = countries;
+    getData() {
+        this.tree1 = treeStructure1;
+        this.tree2 = treeStructure2;
     }
 
-    createForm() {
-        this.homeForm = new FormGroup({
-            email: new FormControl(this.email, [
-                Validators.email, Validators.required
-            ]),
-            country: new FormControl(this.country, [
-                Validators.required
-            ])
-        })
+    checkNode() {
+
     }
 
-    getEmail() {
-        return this.homeForm.get('email').value;
-    }
+    findChanges() {
 
-    emailLog() {
-        TimerObservable.create(1000).subscribe(() => {
-            console.log(this.getEmail());
-        });
-    }
-
-    filterCountries($event) {
-        this.filteredCountries = this.countries.filter(item => {
-            return ~item.title.toLowerCase().search($event.query.toLowerCase())
-        });
-    }
-
-    selectCountry($event: country) {
-        this.country = $event.title;
-    }
-
-    signIn() {
-        TimerObservable.create(3000).subscribe(() => {
-            this.router.navigate(['/']);
-        });
     }
 }

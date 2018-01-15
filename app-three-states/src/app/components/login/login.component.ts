@@ -38,7 +38,7 @@ export class LoginComponent implements OnInit {
     createForm() {
         this.homeForm = new FormGroup({
             email: new FormControl(this.email, [
-                emailValidator, Validators.required
+                emailValidator(), Validators.required
             ]),
             country: new FormControl(this.country, [
                 Validators.required
