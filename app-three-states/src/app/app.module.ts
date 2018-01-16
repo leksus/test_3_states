@@ -12,11 +12,12 @@ import {LoginComponent} from "./components/login/login.component";
 import {ValidEmailDirective} from './directive/valid-email.directive';
 import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
 import {MessageService} from "./service/dialog-message.service";
+import { GridComponent } from './components/grid/grid.component';
 
 
 @NgModule({
     declarations: [
-        AppComponent, HomeComponent, LoginComponent, ValidEmailDirective
+        AppComponent, HomeComponent, LoginComponent, ValidEmailDirective, GridComponent
     ],
     imports: [
         BrowserModule, RouterModule.forRoot(appRoutes), FormsModule, ReactiveFormsModule,

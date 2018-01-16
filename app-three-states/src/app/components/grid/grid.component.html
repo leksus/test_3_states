@@ -1,0 +1,12 @@
+<div>
+    <ul>
+        <li *ngFor="let item of elements"
+            (dragover)="dragover($event)"
+            (dragstart)="dragstart($event, item)"
+            (drop)="drop($event)"
+            draggable="true"
+        >
+            {{item}}
+        </li>
+    </ul>
+</div>
