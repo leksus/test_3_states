@@ -39,10 +39,9 @@ export const treeStructure1 = [{
                     }
                 ]
             }, {
-                "label": "Этаж",
+                "label": "Этаж"
             }, {
-                "label": "Лестница",
-                "styleClass": "changed"
+                "label": "Лестница"
             }, {
                 "label": "Офис 2",
                 "expandedIcon": "fa-folder-open",

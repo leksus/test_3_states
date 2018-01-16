@@ -1,6 +1,14 @@
 <h3>Home</h3>
 
 <div>
+    <button
+        class="btn btn-default"
+        (click)="notify()"
+    >
+        Сообщить
+    </button>
+</div>
+<div>
     <p-tree [value]="tree1">
         <ng-template let-node pTemplate="default">
             <!--[style.color]="'red'"-->
